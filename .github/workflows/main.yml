@@ -1,0 +1,20 @@
+env:
+  requirements: '["yfinance"]'
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  build_report:
+    runs-on: ubuntu-latest
+    name: Run Datapane stock report every day at 6 am
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.8.5
+      - uses: datapane/build-action@v2
+        with:
+          script: 'report.py'
+          token: ${{ secrets.TOKEN }}
+          requirements: "${{ env.requirements }}"
