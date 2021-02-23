@@ -1,5 +1,5 @@
 env:
-  requirements: '["yfinance"]'
+  requirements: '["yfinance", "dotenv"]'
 on:
   schedule:
     - cron: '*/15 * * * *'
